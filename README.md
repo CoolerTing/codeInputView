@@ -2,6 +2,7 @@
 类似支付密码输入框，可明文显示，可密文显示。
 ## 安装
 将CodeInputView文件夹拖入项目中
+
 PS：由于采用masonry布局，也使用了MJExtension，请保证项目中有masonry和MJExtension。
 ## 说明
 项目中需要该功能，于是自己动手做了一个。
@@ -48,9 +49,10 @@ CodeInputView *view = [[CodeInputView alloc]initWithFrame:CGRectMake(0, 100, IPH
 * count：输入框的个数
 
 ### 枚举
+设置对象inputType
 ```objective-c
 typedef NS_ENUM(NSUInteger, inputType) {
-    inputTypeNormal = 0,
-    inputTypeSecurity,
+    inputTypeNormal = 0,//明文显示
+    inputTypeSecurity,//密文显示
 };
 ```
