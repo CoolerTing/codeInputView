@@ -25,9 +25,9 @@ PS：由于采用masonry布局，也使用了MJExtension，请保证项目中有
 创建对象并设置代理
 ```objective-c
 CodeInputView *view = [[CodeInputView alloc]initWithFrame:CGRectMake(0, 100, IPHONE_WIDTH, 60) Space:40 Margin:10 Count:6];
-    view.inputType = inputTypeSecurity;
-    view.delegate = self;
-    [self.view addSubview:view];
+view.inputType = inputTypeSecurity;
+view.delegate = self;
+[self.view addSubview:view];
 ```
 #### delegate
 ```objective-c
