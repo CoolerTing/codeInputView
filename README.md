@@ -29,7 +29,7 @@ view.inputType = inputTypeSecurity;
 view.delegate = self;
 [self.view addSubview:view];
 ```
-#### delegate
+### delegate
 ```objective-c
 - (void)finishEnterCode:(NSString *)number;
 ```
@@ -42,7 +42,7 @@ view.delegate = self;
 }
 ```
 
-### 参数
+## 参数
 * frame：控件的frame
 * space：控件的头尾距父视图的间距
 * margin：每一个输入框的间距
