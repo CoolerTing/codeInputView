@@ -42,7 +42,7 @@ view.delegate = self;
 ```objective-c
 - (void)codeDuringEnter:(CodeInputView *)inputView code:(NSString *)number;
 ```
-
+### 调用代理
 ```objective-c
 - (void)beginEnterCode:(CodeInputView *)inputView {
     NSLog(@"开始输入");
