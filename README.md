@@ -3,7 +3,7 @@
 ## 安装
 将CodeInputView文件夹拖入项目中
 
-PS：由于采用masonry布局，也使用了MJExtension，请保证项目中有masonry和MJExtension。
+PS：由于采用masonry布局，请保证项目中有masonry。
 ## 说明
 项目中需要该功能，于是自己动手做了一个。
 
@@ -30,15 +30,30 @@ view.delegate = self;
 [self.view addSubview:view];
 ```
 ### delegate
+输入完成
 ```objective-c
-- (void)finishEnterCode:(NSString *)number;
+- (void)finishEnterCode:(CodeInputView *)inputView code:(NSString *)number;
 ```
-可选代理，在输入完成时触发代理
+输入开始
+```objective-c
+- (void)beginEnterCode:(CodeInputView *)inputView;
+```
+输入过程
+```objective-c
+- (void)codeDuringEnter:(CodeInputView *)inputView code:(NSString *)number;
+```
 
 ```objective-c
-- (void)finishEnterCode:(NSString *)number
-{
-    NSLog(@"%@",number);
+- (void)beginEnterCode:(CodeInputView *)inputView {
+    NSLog(@"开始输入");
+}
+
+- (void)codeDuringEnter:(CodeInputView *)inputView code:(NSString *)number {
+    NSLog(@"输入中 %@", number);
+}
+
+- (void)finishEnterCode:(CodeInputView *)inputView code:(NSString *)number {
+    NSLog(@"输入完成 %@", number);
 }
 ```
 
