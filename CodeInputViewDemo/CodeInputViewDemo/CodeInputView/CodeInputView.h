@@ -8,17 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol CodeInputViewDelegate <NSObject>
+@interface CodeModel : NSObject
+@property(nonatomic,copy) NSString *number;
+@property(nonatomic,assign) BOOL isSelected;
+@end
 
-@optional
-- (void)finishEnterCode:(NSString *)number;
+typedef NS_ENUM(NSUInteger, cellType) {
+    cellTypeNormal = 0,     //普通模式
+    cellTypeSecurity,       //密文模式
+};
 
+@interface CodeCollectionViewCell : UICollectionViewCell
+@property(nonatomic,assign) cellType type;
+@property(nonatomic,strong) CodeModel *model;
 @end
 
 typedef NS_ENUM(NSUInteger, inputType) {
     inputTypeNormal = 0,
     inputTypeSecurity,
 };
+
+@protocol CodeInputViewDelegate;
 
 @interface CodeInputView : UIView
 
@@ -27,4 +37,29 @@ typedef NS_ENUM(NSUInteger, inputType) {
 @property (nonatomic,weak) id<CodeInputViewDelegate> delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame Space:(CGFloat)space Margin:(CGFloat)margin Count:(NSInteger)count;
+@end
+
+@protocol CodeInputViewDelegate <NSObject>
+
+@optional
+/**
+ 完成输入时代理
+
+ @param inputView 密码控件
+ @param number 密码
+ */
+- (void)finishEnterCode:(CodeInputView *)inputView code:(NSString *)number;
+/**
+ 开始输入时代理
+
+ @param inputView 密码控件
+ */
+- (void)beginEnterCode:(CodeInputView *)inputView;
+/**
+ 输入过程代理
+
+ @param inputView 密码控件
+ @param number 密码
+ */
+- (void)codeDuringEnter:(CodeInputView *)inputView code:(NSString *)number;
 @end

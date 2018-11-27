@@ -17,17 +17,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
     CodeInputView *view = [[CodeInputView alloc]initWithFrame:CGRectMake(0, 100, IPHONE_WIDTH, 60) Space:40 Margin:10 Count:6];
     view.inputType = inputTypeSecurity;
     view.delegate = self;
     [self.view addSubview:view];
 }
 
+- (void)beginEnterCode:(CodeInputView *)inputView {
+    NSLog(@"开始输入");
+}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)codeDuringEnter:(CodeInputView *)inputView code:(NSString *)number {
+    NSLog(@"输入中 %@", number);
+}
+
+- (void)finishEnterCode:(CodeInputView *)inputView code:(NSString *)number {
+    NSLog(@"输入完成 %@", number);
 }
 
 
